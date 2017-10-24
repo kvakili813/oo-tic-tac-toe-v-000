@@ -15,11 +15,11 @@ WIN_COMBINATIONS = [
 ]
 
 def display_board
-puts " #{board[0]} | #{board[1]} | #{board[2]} "
+puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
 puts "-----------"
-puts " #{board[3]} | #{board[4]} | #{board[5]} "
+puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
 puts "-----------"
-puts " #{board[6]} | #{board[7]} | #{board[8]} "
+puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
 end
 
 def input_to_index(string)
@@ -31,7 +31,7 @@ def move(space, char)
 end
 
 def position_taken?(index)
-  if [index] == " " || [index] == "" || [index] == nil
+  if @board[index] == " " || @board[index] == "" || @board[index] == nil
     false
   else
     true
@@ -60,7 +60,7 @@ end
 
 def turn_count
   count = 0
-  board.each do |turn|
+  @board.each do |turn|
     if turn == "X" || turn == "O"
       count += 1
     end
@@ -82,16 +82,16 @@ def won?
     index_2 = combinations[1]
     index_3 = combinations[2]
 
-    position_1 = board[index_1]
-    position_2 = board[index_2]
-    position_3 = board[index_3]
+    position_1 = @board[index_1]
+    position_2 = @board[index_2]
+    position_3 = @board[index_3]
 
     position_1 == position_2 && position_2 == position_3 && position_3 != " "
   end
 end
 
 def full?
-  board.all? do |complete|
+  @board.all? do |complete|
     complete != " "
   end
 end
@@ -107,7 +107,7 @@ end
 def winner
   won = won?
 if won
-board[won[0]]
+@board[won[0]]
 end
 end
 
